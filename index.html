@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Chord Chart</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/howler/1.1.17/howler.min.js"></script>
+    <!-- this is just some css code. -->
+    <style>
+
+    body {
+      background-color: #ccc;
+    }
+    #stage-canvas {
+      max-width: 500px;
+      height: 600px;
+      margin: 0 auto;
+    }
+
+    </style>
+  </head>
+  <body>
+
+  <div id="stage-canvas"></div>
+
+
+  <script>
+
+    //var beat1 = new Howl({urls: ['beats/beatA.wav'],loop: true,volume: 0.5,});
+
+    window.onload = function(){
+    var paper = new Raphael(document.getElementById('stage-canvas'), 500, 500);
+
+    var circle = paper.circle(200, 200, 50);
+    circle.attr('fill', '#2197C6');
+    circle.attr('stroke', 'none');
+
+    //var group = paper.set(poly1, poly2, poly3, poly4,poly5, poly6, poly7, poly8, poly9);
+
+    //group.translate(30, 50);
+
+    function opacityDown(elem){
+      elem.animate({opacity: .2}, 2000, opacityRecover);
+    };
+
+    function opacityRecover(){
+      this.animate({opacity: .8}, 2000, opacityDown);
+    };
+
+
+    poly1.dblclick(function(){beat1.play();opacityDown(this);});
+    poly2.dblclick(function(){beat2.play();opacityDown(this);});
+    poly3.dblclick(function(){beat3.play();opacityDown(this);});
+    poly4.dblclick(function(){beat4.play();opacityDown(this);});
+    poly5.dblclick(function(){beat5.play();opacityDown(this);});
+    poly6.dblclick(function(){beat6.play();opacityDown(this);});
+    poly7.dblclick(function(){beat7.play();opacityDown(this);});
+    poly8.dblclick(function(){beat8.play();opacityDown(this);});
+    poly9.dblclick(function(){beat9.play();opacityDown(this);});
+
+    poly1.click(function(){beat1.stop();opacityRecover(this);});
+    poly2.click(function(){beat2.stop();opacityRecover(this)});
+    poly3.click(function(){beat3.stop();opacityRecover(this)});
+    poly4.click(function(){beat4.stop();opacityRecover(this)});
+    poly5.click(function(){beat5.stop();opacityRecover(this)});
+    poly6.click(function(){beat6.stop();opacityRecover(this)});
+    poly7.click(function(){beat7.stop();opacityRecover(this)});
+    poly8.click(function(){beat8.stop();opacityRecover(this)});
+    poly9.click(function(){beat9.stop();opacityRecover(this)});
+
+
+
+  }
+
+
+
+
+
+
+  </script>
+
+  </body>
+</html>
