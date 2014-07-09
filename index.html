@@ -10,10 +10,13 @@
 
     body {
       background-color: #ccc;
+      margin: 0;
+      padding: 0;
+      text-align: center;
     }
     #stage-canvas {
-      max-width: 500px;
-      height: 600px;
+      width: 100%;
+      height: 480px;
       margin: 0 auto;
     }
 
@@ -26,14 +29,14 @@
 
   <script>
 
-    //var beat1 = new Howl({urls: ['beats/beatA.wav'],loop: true,volume: 0.5,});
-
     window.onload = function(){
-    var paper = new Raphael(document.getElementById('stage-canvas'), 500, 500);
+    var paper = new Raphael(document.getElementById('stage-canvas'));
 
-    var circle = paper.circle(200, 200, 50);
-    circle.attr('fill', '#2197C6');
-    circle.attr('stroke', 'none');
+    paper.circle(120, 140, 50).animate({fill: "#223fa3", stroke: "#000", "stroke-width": 50, "stroke-opacity": 0.5}, 2000);
+    paper.circle(320, 140, 50).animate({fill: "#223fa3", stroke: "#000", "stroke-width": 50, "stroke-opacity": 0.5}, 2000);
+    paper.circle(520, 140, 50).animate({fill: "#223fa3", stroke: "#000", "stroke-width": 50, "stroke-opacity": 0.5}, 2000);
+    paper.circle(720, 140, 50).animate({fill: "#223fa3", stroke: "#000", "stroke-width": 50, "stroke-opacity": 0.5}, 2000);
+    paper.circle(920, 140, 50).animate({fill: "#223fa3", stroke: "#000", "stroke-width": 50, "stroke-opacity": 0.5}, 2000);
 
     //var group = paper.set(poly1, poly2, poly3, poly4,poly5, poly6, poly7, poly8, poly9);
 
