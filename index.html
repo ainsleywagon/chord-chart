@@ -9,15 +9,16 @@
     <style>
 
     body {
-      background-color: #ccc;
+      background-color: #fff;
       margin: 0;
       padding: 0;
       text-align: center;
     }
     #stage-canvas {
       width: 100%;
-      height: 480px;
+      height: 960px;
       margin: 0 auto;
+      border: 1px solid black;
     }
 
     </style>
@@ -31,47 +32,42 @@
 
     window.onload = function(){
     var paper = new Raphael(document.getElementById('stage-canvas'));
+    //console.log(paper.width);
+    var centerWidth = paper.width / 2;
+    var startingY = 800;
+    var startingX = paper.width / 6
 
-    paper.circle(120, 140, 50).animate({fill: "#223fa3", stroke: "#000", "stroke-width": 50, "stroke-opacity": 0.5}, 2000);
-    paper.circle(320, 140, 50).animate({fill: "#223fa3", stroke: "#000", "stroke-width": 50, "stroke-opacity": 0.5}, 2000);
-    paper.circle(520, 140, 50).animate({fill: "#223fa3", stroke: "#000", "stroke-width": 50, "stroke-opacity": 0.5}, 2000);
-    paper.circle(720, 140, 50).animate({fill: "#223fa3", stroke: "#000", "stroke-width": 50, "stroke-opacity": 0.5}, 2000);
-    paper.circle(920, 140, 50).animate({fill: "#223fa3", stroke: "#000", "stroke-width": 50, "stroke-opacity": 0.5}, 2000);
+    var circlesClicked = 0;
+
+    var circle1 = paper.circle(startingX * 1, startingY, 50).data('startingX', startingX * 1).animate({fill: "purple", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
+    var circle2 = paper.circle(startingX * 2, startingY, 50).data('startingX', startingX * 2).animate({fill: "lightpink", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
+    var circle3 = paper.circle(startingX * 3, startingY, 50).data('startingX', startingX * 3).animate({fill: "yellow", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
+    var circle4 = paper.circle(startingX * 4, startingY, 50).data('startingX', startingX * 4).animate({fill: "lightgreen", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
+    var circle5 = paper.circle(startingX * 5, startingY, 50).data('startingX', startingX * 5).animate({fill: "lightblue", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
 
     //var group = paper.set(poly1, poly2, poly3, poly4,poly5, poly6, poly7, poly8, poly9);
 
     //group.translate(30, 50);
 
-    function opacityDown(elem){
-      elem.animate({opacity: .2}, 2000, opacityRecover);
-    };
+    function colorChange(elem){
+      console.log(elem)
+      if (elem.attrs.cy === startingY) {
+          circlesClicked += 1;
+          elem.animate({"stroke-width": 50, cx: centerWidth, cy: startingY - 100 * circlesClicked}, 2000);
+      }
+      else {
+          circlesClicked -= 1;
+          elem.animate({"stroke-width": 50, cx: elem.data('startingX'), cy: startingY}, 2000);
+      }
+    }
 
-    function opacityRecover(){
-      this.animate({opacity: .8}, 2000, opacityDown);
-    };
+    //poly1.dblclick(function(){beat1.play();opacityDown(this);});
 
-
-    poly1.dblclick(function(){beat1.play();opacityDown(this);});
-    poly2.dblclick(function(){beat2.play();opacityDown(this);});
-    poly3.dblclick(function(){beat3.play();opacityDown(this);});
-    poly4.dblclick(function(){beat4.play();opacityDown(this);});
-    poly5.dblclick(function(){beat5.play();opacityDown(this);});
-    poly6.dblclick(function(){beat6.play();opacityDown(this);});
-    poly7.dblclick(function(){beat7.play();opacityDown(this);});
-    poly8.dblclick(function(){beat8.play();opacityDown(this);});
-    poly9.dblclick(function(){beat9.play();opacityDown(this);});
-
-    poly1.click(function(){beat1.stop();opacityRecover(this);});
-    poly2.click(function(){beat2.stop();opacityRecover(this)});
-    poly3.click(function(){beat3.stop();opacityRecover(this)});
-    poly4.click(function(){beat4.stop();opacityRecover(this)});
-    poly5.click(function(){beat5.stop();opacityRecover(this)});
-    poly6.click(function(){beat6.stop();opacityRecover(this)});
-    poly7.click(function(){beat7.stop();opacityRecover(this)});
-    poly8.click(function(){beat8.stop();opacityRecover(this)});
-    poly9.click(function(){beat9.stop();opacityRecover(this)});
-
-
+    circle1.click(function(){colorChange(this)});
+    circle2.click(function(){colorChange(this)});
+    circle3.click(function(){colorChange(this)});
+    circle4.click(function(){colorChange(this)});
+    circle5.click(function(){colorChange(this)});
 
   }
 
