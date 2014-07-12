@@ -45,19 +45,15 @@
     var circle4 = paper.circle(startingX * 4, startingY, 50).data('startingX', startingX * 4).animate({fill: "lightgreen", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
     var circle5 = paper.circle(startingX * 5, startingY, 50).data('startingX', startingX * 5).animate({fill: "lightblue", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
 
-    //var group = paper.set(poly1, poly2, poly3, poly4,poly5, poly6, poly7, poly8, poly9);
-
-    //group.translate(30, 50);
-
     function colorChange(elem){
       console.log(elem)
       if (elem.attrs.cy === startingY) {
           circlesClicked += 1;
-          elem.animate({"stroke-width": 50, cx: centerWidth, cy: startingY - 100 * circlesClicked}, 2000);
+          elem.animate({"stroke-width": 50, cx: centerWidth, cy: startingY - 100 * circlesClicked}, 2000, "bounce");
       }
       else {
           circlesClicked -= 1;
-          elem.animate({"stroke-width": 50, cx: elem.data('startingX'), cy: startingY}, 2000);
+          elem.animate({"stroke-width": 50, cx: elem.data('startingX'), cy: startingY}, 2000, "elastic");
       }
     }
 
