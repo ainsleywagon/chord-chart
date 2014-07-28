@@ -31,6 +31,13 @@
   <script>
 
     window.onload = function(){
+
+    var bell1 = new Howl({urls: ["templebell.mp3"],loop: true,volume: 0.5,});
+    var bell2 = new Howl({urls: ["music/templebell2.mp3"],loop: true,volume: 0.5,});
+    var bell3 = new Howl({urls: ["music/templebell3.mp3"],loop: true,volume: 0.5,});
+    var bell4 = new Howl({urls: ["music/templebelljapanese.mp3"],loop: true,volume: 0.5,});
+    var bell5 = new Howl({urls: ["music/templebellzen.mp3"],loop: true,volume: 0.5,});
+
     var paper = new Raphael(document.getElementById('stage-canvas'));
     //console.log(paper.width);
     var centerWidth = paper.width / 2;
@@ -44,6 +51,8 @@
     var circle3 = paper.circle(startingX * 3, startingY, 50).data('startingX', startingX * 3).animate({fill: "yellow", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
     var circle4 = paper.circle(startingX * 4, startingY, 50).data('startingX', startingX * 4).animate({fill: "lightgreen", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
     var circle5 = paper.circle(startingX * 5, startingY, 50).data('startingX', startingX * 5).animate({fill: "lightblue", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
+
+
 
     function colorChange(elem){
       console.log(elem)
@@ -59,7 +68,9 @@
 
     //poly1.dblclick(function(){beat1.play();opacityDown(this);});
 
-    circle1.click(function(){colorChange(this)});
+
+
+    circle1.click(function(){colorChange(this); bell1.play();});
     circle2.click(function(){colorChange(this)});
     circle3.click(function(){colorChange(this)});
     circle4.click(function(){colorChange(this)});
