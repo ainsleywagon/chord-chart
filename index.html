@@ -32,7 +32,7 @@
 
     window.onload = function(){
 
-    var bell1 = new Howl({urls: ["templebell.mp3"],loop: true,volume: 0.5,});
+    var bell1 = new Howl({urls: ["music/templebell.mp3"],loop: true,volume: 0.5,});
     var bell2 = new Howl({urls: ["music/templebell2.mp3"],loop: true,volume: 0.5,});
     var bell3 = new Howl({urls: ["music/templebell3.mp3"],loop: true,volume: 0.5,});
     var bell4 = new Howl({urls: ["music/templebelljapanese.mp3"],loop: true,volume: 0.5,});
@@ -59,6 +59,7 @@
       if (elem.attrs.cy === startingY) {
           circlesClicked += 1;
           elem.animate({"stroke-width": 50, cx: centerWidth, cy: startingY - 100 * circlesClicked}, 2000, "bounce");
+          console.log(this.id == 0);
       }
       else {
           circlesClicked -= 1;
@@ -66,15 +67,16 @@
       }
     }
 
-    //poly1.dblclick(function(){beat1.play();opacityDown(this);});
-
-
-
     circle1.click(function(){colorChange(this); bell1.play();});
-    circle2.click(function(){colorChange(this)});
-    circle3.click(function(){colorChange(this)});
-    circle4.click(function(){colorChange(this)});
-    circle5.click(function(){colorChange(this)});
+    circle2.click(function(){colorChange(this); bell2.play();});
+    circle3.click(function(){colorChange(this); bell3.play();});
+    circle4.click(function(){colorChange(this); bell4.play();});
+    circle5.click(function(){colorChange(this); bell5.play();});
+
+
+
+    circle1.dblclick(function(){bell1.stop();opacityRecover(this);});
+    circle2.dblclick(function(){bell2.stop();opacityRecover(this);});
 
   }
 
