@@ -5,6 +5,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/howler/1.1.17/howler.min.js"></script>
+    <script src="chordcharts.js"></script>
     <!-- this is just some css code. -->
     <style>
 
@@ -28,64 +29,7 @@
   <div id="stage-canvas"></div>
 
 
-  <script>
 
-    window.onload = function(){
-
-    var bell1 = new Howl({urls: ["music/templebell.mp3"],loop: true,volume: 0.5,});
-    var bell2 = new Howl({urls: ["music/templebell2.mp3"],loop: true,volume: 0.5,});
-    var bell3 = new Howl({urls: ["music/templebell3.mp3"],loop: true,volume: 0.5,});
-    var bell4 = new Howl({urls: ["music/templebelljapanese.mp3"],loop: true,volume: 0.5,});
-    var bell5 = new Howl({urls: ["music/templebellzen.mp3"],loop: true,volume: 0.5,});
-
-    var paper = new Raphael(document.getElementById('stage-canvas'));
-    //console.log(paper.width);
-    var centerWidth = paper.width / 2;
-    var startingY = 800;
-    var startingX = paper.width / 6
-
-    var circlesClicked = 0;
-
-    var circle1 = paper.circle(startingX * 1, startingY, 50).data('startingX', startingX * 1).animate({fill: "purple", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
-    var circle2 = paper.circle(startingX * 2, startingY, 50).data('startingX', startingX * 2).animate({fill: "lightpink", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
-    var circle3 = paper.circle(startingX * 3, startingY, 50).data('startingX', startingX * 3).animate({fill: "yellow", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
-    var circle4 = paper.circle(startingX * 4, startingY, 50).data('startingX', startingX * 4).animate({fill: "lightgreen", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
-    var circle5 = paper.circle(startingX * 5, startingY, 50).data('startingX', startingX * 5).animate({fill: "lightblue", stroke: "#DDD", "stroke-width": 30, "stroke-opacity": 0.5}, 2000);
-
-
-
-    function colorChange(elem){
-      console.log(elem)
-      if (elem.attrs.cy === startingY) {
-          circlesClicked += 1;
-          elem.animate({"stroke-width": 50, cx: centerWidth, cy: startingY - 100 * circlesClicked}, 2000, "bounce");
-          console.log(this.id == 0);
-      }
-      else {
-          circlesClicked -= 1;
-          elem.animate({"stroke-width": 50, cx: elem.data('startingX'), cy: startingY}, 2000, "elastic");
-      }
-    }
-
-    circle1.click(function(){colorChange(this); bell1.play();});
-    circle2.click(function(){colorChange(this); bell2.play();});
-    circle3.click(function(){colorChange(this); bell3.play();});
-    circle4.click(function(){colorChange(this); bell4.play();});
-    circle5.click(function(){colorChange(this); bell5.play();});
-
-
-
-    circle1.dblclick(function(){bell1.stop();opacityRecover(this);});
-    circle2.dblclick(function(){bell2.stop();opacityRecover(this);});
-
-  }
-
-
-
-
-
-
-  </script>
 
   </body>
 </html>
