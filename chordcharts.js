@@ -15,7 +15,7 @@ var paper = new Raphael(document.getElementById('stage-canvas'));
 var centerWidth = paper.width / 2;
 
 var startingX = paper.width / 6
-var startingY = 800;
+var startingY = 600;
 var circlesClicked = 0;
 
 
@@ -44,7 +44,7 @@ function colorChange(elem){
   }
   else {
       circlesClicked -= 1;
-      elem.animate({"stroke-width": 50, cx: elem.data('startingX'), cy: startingY}, 2000);
+      elem.animate({"stroke-width": 50, cx: elem.data('startingX'), cy: startingY}, 2000, "elastic");
   }
 }
 
