@@ -23,28 +23,21 @@ function clickCircle(circle, bell) {
   circle.playing = false;
 
   return function() {
-    colorChange(circle);
 
     if (circle.playing == false) {
-      bell.play();
+      // console.log('circle was not playing: ' + circle)
       circle.playing = true;
-    } else {
-      bell.stop();
-      circle.playing = false;
-    }
-  }
-}
-
-function colorChange(elem){
-  console.log(elem)
-  if (elem.attrs.cy === startingY) {
       circlesClicked += 1;
-      elem.animate({"stroke-width": 50, cx: centerWidth, cy: startingY - 100 * circlesClicked}, 2000, "bounce");
-      console.log(this.id == 0);
-  }
-  else {
+      circle.animate({"stroke-width": 50, cx: centerWidth, cy: startingY - 100 * circlesClicked}, 2000, "bounce");
+      bell.play();
+    } else {
+      // console.log('circle was already playing: ' + circle)
+      circle.playing = false;
       circlesClicked -= 1;
-      elem.animate({"stroke-width": 50, cx: elem.data('startingX'), cy: startingY}, 2000, "elastic");
+      circle.animate({"stroke-width": 50, cx: circle.data('startingX'), cy: startingY}, 2000, "elastic");
+      bell.stop();
+
+    }
   }
 }
 
