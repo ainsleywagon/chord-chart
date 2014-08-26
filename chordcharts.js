@@ -4,8 +4,8 @@ var g_c1;
 
 window.onload = function(){
 
-var bell1 = new Howl({urls: ["music/templebell.mp3"],loop: true,volume: 0.5,});
-var bell2 = new Howl({urls: ["music/templebell2.mp3"],loop: true,volume: 0.5,});
+var bell1 = new Howl({urls: ["music/lowG.mp3"],loop: true,volume: 0.5,});
+var bell2 = new Howl({urls: ["music/lowD.mp3"],loop: true,volume: 0.5,});
 var bell3 = new Howl({urls: ["music/templebell3.mp3"],loop: true,volume: 0.5,});
 var bell4 = new Howl({urls: ["music/templebelljapanese.mp3"],loop: true,volume: 0.5,});
 var bell5 = new Howl({urls: ["music/templebellzen.mp3"],loop: true,volume: 0.5,});
